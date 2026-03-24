@@ -212,7 +212,7 @@ final class SpringScrollAnimator {
     ) { [weak self] gestureRecognizer, _ in
       guard let self else { return }
 
-      let state = gestureRecognizer.state
+      nonisolated(unsafe) let state = gestureRecognizer.state
       if state == .began || state == .changed {
         // User started scrolling manually, cancel animation
         Task { @MainActor in
